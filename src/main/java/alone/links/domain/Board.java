@@ -2,6 +2,15 @@ package alone.links.domain;
 
 public class Board {
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    private Long id;
     private String title;
     private String desc;
     private String author;
