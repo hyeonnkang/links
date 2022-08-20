@@ -1,7 +1,6 @@
-package repository;
+package alone.links.repository;
 
 import alone.links.domain.Board;
-import alone.links.repository.MemoryBoardRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
