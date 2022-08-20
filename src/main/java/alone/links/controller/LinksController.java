@@ -12,4 +12,15 @@ public class LinksController {
         model.addAttribute("data", "아무개");
         return "list";
     }
+
+    @GetMapping("create")
+    public String create(Model model){
+        model.addAttribute("data", "아무개");
+        return "create";
+    }
+
+    @GetMapping("create_process")
+    public String create_process(Model model){
+        return "create_process";
+    }
 }
