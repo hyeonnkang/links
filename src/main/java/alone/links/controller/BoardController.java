@@ -23,7 +23,9 @@ public class BoardController {
     @GetMapping("/boards")
     public String list(Model model) {
         model.addAttribute("data", "아무개");
-        List<Board> boards = boardService.findBoards();
+
+        List<Board> boards = boardService.findBoards(); // 게시글 모두 조회
+
         model.addAttribute("boards", boards);
         System.out.println("board get success");
         for(Board b : boards){
@@ -40,10 +42,7 @@ public class BoardController {
 
     @PostMapping("boards/create")
     public String create_process(BoardForm form) {
-        Board board = new Board();
-        board.setTitle(form.getTitle());
-        board.setDesc(form.getDesc());
-        board.setAuthor(form.getAuthor());
+        Board board = new Board(form.getTitle(), form.getDesc(), form.getAuthor());
 
         boardService.create(board);
 

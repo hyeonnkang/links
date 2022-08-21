@@ -1,6 +1,6 @@
 package alone.links;
 
-import alone.links.model.Board;
+import alone.links.domain.Board;
 import alone.links.repository.MongoBoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

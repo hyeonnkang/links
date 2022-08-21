@@ -1,23 +1,24 @@
 package alone.links.repository;
 
+
 import alone.links.domain.Board;
 
 import java.util.*;
 
 public class MemoryBoardRepository implements BoardRepository{
 
-    private static Map<Long, Board> store = new HashMap<>();
+    private static Map<String, Board> store = new HashMap<>();
     private static long sequence = 0L;  // 글 번호
 
     @Override
     public Board insert(Board board) {
-        board.setId(++sequence);
+//        board.setId(++sequence);
         store.put(board.getId(), board);
         return board;
     }
 
     @Override
-    public Optional<Board> findById(Long id) {
+    public Optional<Board> findById(String id) {
         return Optional.ofNullable(store.get(id));
     }
 

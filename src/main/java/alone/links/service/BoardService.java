@@ -15,7 +15,7 @@ public class BoardService {
     }
 
     // 글 생성
-    public Long create(Board board){
+    public String create(Board board){
         boardRepository.insert(board);
         return board.getId();
     }
@@ -26,7 +26,7 @@ public class BoardService {
     }
 
     // 글 id에 해당하는 글 조회
-    public Optional<Board> findOne(Long boardId){
+    public Optional<Board> findOne(String boardId){
         return boardRepository.findById(boardId);
     }
 }

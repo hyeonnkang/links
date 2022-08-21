@@ -27,13 +27,10 @@ public class BoardServiceTest {
     public void create() throws Exception{
 
         //given
-        Board board = new Board();
-        board.setTitle("제목1");
-        board.setDesc("내용1");
-        board.setAuthor("아무개");
+        Board board = new Board("제목1", "내용1", "아무개");
 
         //when
-        Long saveId = boardService.create(board);
+        String saveId = boardService.create(board);
 
         //then
         Board findBoard = boardRepository.findById(saveId).get();

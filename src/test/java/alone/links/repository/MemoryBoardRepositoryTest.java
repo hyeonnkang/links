@@ -20,10 +20,7 @@ public class MemoryBoardRepositoryTest {
     @Test
     public void insert() {
         //given
-        Board board = new Board();
-        board.setTitle("제목1");
-        board.setDesc("내용1");
-        board.setAuthor("아무개");
+        Board board = new Board("제목1", "내용1", "아무개");
 
         //when
         repository.insert(board);
@@ -36,15 +33,9 @@ public class MemoryBoardRepositoryTest {
     @Test
     public void findById() {
         //given
-        Board board1 = new Board();
-        board1.setTitle("제목1");
-        board1.setDesc("내용1");
-        board1.setAuthor("아무개");
+        Board board1 = new Board("제목1", "내용1", "아무개");
 
-        Board board2 = new Board();
-        board2.setTitle("제목2");
-        board2.setDesc("내용2");
-        board2.setAuthor("아무개");
+        Board board2 = new Board("제목2", "내용2", "아무개");
 
         //when
         repository.insert(board1);
@@ -58,10 +49,7 @@ public class MemoryBoardRepositoryTest {
     @Test
     public void findByTitle() {
         //given
-        Board board = new Board();
-        board.setTitle("제목1");
-        board.setDesc("내용1");
-        board.setAuthor("아무개");
+        Board board = new Board("제목1", "내용1", "아무개");
 
         //when
         repository.insert(board);
@@ -74,10 +62,7 @@ public class MemoryBoardRepositoryTest {
     @Test
     public void findByDesc() {
         //given
-        Board board = new Board();
-        board.setTitle("제목1");
-        board.setDesc("내용1");
-        board.setAuthor("아무개");
+        Board board = new Board("제목1", "내용1", "아무개");
 
         //when
         repository.insert(board);
@@ -90,15 +75,9 @@ public class MemoryBoardRepositoryTest {
     @Test
     public void findAll() {
         //given
-        Board board1 = new Board();
-        board1.setTitle("제목1");
-        board1.setDesc("내용1");
-        board1.setAuthor("아무개");
+        Board board1 = new Board("제목1", "내용1", "아무개");
 
-        Board board2 = new Board();
-        board2.setTitle("제목2");
-        board2.setDesc("내용2");
-        board2.setAuthor("아무개");
+        Board board2 = new Board("제목2", "내용2", "아무개");
 
         //when
         repository.insert(board1);
