@@ -18,7 +18,7 @@ public class MemoryBoardRepositoryTest {
     }
 
     @Test
-    public void save() {
+    public void insert() {
         //given
         Board board = new Board();
         board.setTitle("제목1");
@@ -26,7 +26,7 @@ public class MemoryBoardRepositoryTest {
         board.setAuthor("아무개");
 
         //when
-        repository.save(board);
+        repository.insert(board);
 
         //then
         Board result = repository.findById(board.getId()).get();
@@ -47,8 +47,8 @@ public class MemoryBoardRepositoryTest {
         board2.setAuthor("아무개");
 
         //when
-        repository.save(board1);
-        repository.save(board2);
+        repository.insert(board1);
+        repository.insert(board2);
 
         //then
         Board result = repository.findById(board1.getId()).get();
@@ -64,7 +64,7 @@ public class MemoryBoardRepositoryTest {
         board.setAuthor("아무개");
 
         //when
-        repository.save(board);
+        repository.insert(board);
 
         //then
         Board result = repository.findByTitle(board.getTitle()).get();
@@ -80,7 +80,7 @@ public class MemoryBoardRepositoryTest {
         board.setAuthor("아무개");
 
         //when
-        repository.save(board);
+        repository.insert(board);
 
         //then
         Board result = repository.findByDesc(board.getDesc()).get();
@@ -101,8 +101,8 @@ public class MemoryBoardRepositoryTest {
         board2.setAuthor("아무개");
 
         //when
-        repository.save(board1);
-        repository.save(board2);
+        repository.insert(board1);
+        repository.insert(board2);
         List<Board> result = repository.findAll();
 
         //then

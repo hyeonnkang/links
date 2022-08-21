@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface BoardRepository {
 
-    Board save(Board board);
+    Board insert(Board board);
     Optional<Board> findById(Long id);
     Optional<Board> findByTitle(String title);
     Optional<Board> findByDesc(String desc);

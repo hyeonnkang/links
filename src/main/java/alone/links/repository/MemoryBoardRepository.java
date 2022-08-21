@@ -10,7 +10,7 @@ public class MemoryBoardRepository implements BoardRepository{
     private static long sequence = 0L;  // 글 번호
 
     @Override
-    public Board save(Board board) {
+    public Board insert(Board board) {
         board.setId(++sequence);
         store.put(board.getId(), board);
         return board;

@@ -16,7 +16,7 @@ public class BoardService {
 
     // 글 생성
     public Long create(Board board){
-        boardRepository.save(board);
+        boardRepository.insert(board);
         return board.getId();
     }
 
