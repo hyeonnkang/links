@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BoardService {
@@ -21,5 +22,9 @@ public class BoardService {
 
     public List<Board> findAll(){  // 모든 board 리스트를 반환
         return boardRepository.findAll();
+    }
+
+    public Optional<Board> findById(String id){
+        return boardRepository.findById(id);
     }
 }

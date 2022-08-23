@@ -26,11 +26,6 @@ public class BoardController {
 
         List<Board> boards = boardService.findAll(); // 게시글 모두 조회
         model.addAttribute("boards", boards);
-
-        System.out.println("board get success");
-        for(Board b : boards){
-            System.out.println("b.getTitle() = " + b.getTitle());
-        }
         return "boards/boardList";
     }
 

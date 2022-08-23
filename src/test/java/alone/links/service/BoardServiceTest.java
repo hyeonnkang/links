@@ -2,7 +2,6 @@ package alone.links.service;
 
 import alone.links.controller.BoardForm;
 import alone.links.domain.Board;
-import alone.links.repository.BoardRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -36,5 +35,22 @@ public class BoardServiceTest {
         
         String id = boardService.create(boardForm);
         System.out.println("id = " + id);
+    }
+
+    @Test
+    @DisplayName("id로 board 조회")
+    public void findById(){
+        BoardForm boardForm = new BoardForm();
+        boardForm.setTitle("bye");
+        boardForm.setDesc("i'm studying");
+        boardForm.setAuthor("whoareyou");
+
+        String id = boardService.create(boardForm);
+
+        Board result = boardService.findById(id).get();
+
+        Assertions.assertThat(result.getTitle()).isEqualTo(boardForm.getTitle());
+        Assertions.assertThat(result.getDesc()).isEqualTo(boardForm.getDesc());
+        Assertions.assertThat(result.getAuthor()).isEqualTo(boardForm.getAuthor());
     }
 }
