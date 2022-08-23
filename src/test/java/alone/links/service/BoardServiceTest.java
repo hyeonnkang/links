@@ -1,6 +1,6 @@
 package alone.links.service;
 
-import alone.links.controller.BoardForm;
+import alone.links.form.BoardForm;
 import alone.links.domain.Board;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

@@ -1,4 +1,4 @@
-package alone.links.controller;
+package alone.links.form;
 
 public class BoardForm {
     private String id;
