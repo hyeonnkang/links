@@ -1,9 +1,18 @@
 package alone.links.controller;
 
 public class BoardForm {
+    private String id;
     private String title;
     private String desc;
     private String author;
+
+    public void setId(String id){
+        this.id = id;
+    }
+
+    public String getId(){
+        return id;
+    }
 
     public String getTitle() {
         return title;
@@ -28,4 +37,5 @@ public class BoardForm {
     public void setAuthor(String author) {
         this.author = author;
     }
+
 }

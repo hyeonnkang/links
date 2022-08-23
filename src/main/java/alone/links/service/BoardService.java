@@ -28,6 +28,19 @@ public class BoardService {
         return boardRepository.findById(id);
     }
 
+    public String update(BoardForm boardForm){
+        if(this.findById(boardForm.getId()).isEmpty())
+            return "수정실패";
+
+        Board board = this.findById(boardForm.getId()).get();
+        board.setTitle(boardForm.getTitle());
+        board.setDesc(boardForm.getDesc());
+
+        boardRepository.save(board);    // id값이 이전과 동일하므로 수정된다.
+
+        return "수정성공";
+    }
+
     public String deleteById(String id){
         if(this.findById(id).isEmpty())
             return "삭제실패";

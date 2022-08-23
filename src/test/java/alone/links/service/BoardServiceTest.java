@@ -68,4 +68,24 @@ public class BoardServiceTest {
 
         Assertions.assertThat(message).isEqualTo("삭제성공");
     }
+
+    @Test
+    @DisplayName("board 수정하기")
+    public void update(){
+        BoardForm boardForm = new BoardForm();
+        boardForm.setTitle("수정전 bye");
+        boardForm.setDesc("i'm studying2");
+        boardForm.setAuthor("whoareyou2");
+
+        String id = boardService.create(boardForm);
+
+        boardForm.setId(id);
+        boardForm.setTitle("수정후 bye");
+        boardForm.setDesc("수정후 i'm studying2");
+        boardForm.setAuthor("수정후 whoareyou2");
+
+        String result = boardService.update(boardForm);
+
+        Assertions.assertThat(result).isEqualTo("수정성공");
+    }
 }

@@ -33,11 +33,9 @@
         <td th:text="${board.desc}"></td>
         <td th:text="${board.author}"></td>
         <td>
-<!--          <a href="/boards/update?id=${board.id}">수정</a>-->
           <a th:href="@{/boards/update(id=${board.id})}">수정</a>
          </td>
         <td>
-<!--          <a href="/boards/delete?id=${board.id}">삭제</a>-->
           <a th:href="@{/boards/delete(id=${board.id})}">삭제</a>
         </td>
       </tr>

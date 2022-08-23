@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class BoardController {
@@ -45,6 +46,25 @@ public class BoardController {
     @GetMapping("boards/delete")
     public String delete_process(String id, Model model) {
         boardService.deleteById(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/boards/update")
+    public String update(String id, Model model){
+        model.addAttribute("data" , "아무개");
+        if(boardService.findById(id).isPresent()){
+            Board board = boardService.findById(id).get();
+            model.addAttribute("board", board);
+            return "boards/updateBoardForm";
+        }else{
+            System.out.println("수정하려는 id가 없습니다.");
+            return "redirect:/";
+        }
+    }
+
+    @PostMapping("boards/update")
+    public String update_process(BoardForm boardForm) {
+        boardService.update(boardForm);
         return "redirect:/";
     }
 }
