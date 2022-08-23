@@ -53,4 +53,19 @@ public class BoardServiceTest {
         Assertions.assertThat(result.getDesc()).isEqualTo(boardForm.getDesc());
         Assertions.assertThat(result.getAuthor()).isEqualTo(boardForm.getAuthor());
     }
+
+    @Test
+    @DisplayName("id로 board 삭제")
+    public void deleteById(){
+        BoardForm boardForm = new BoardForm();
+        boardForm.setTitle("bye2");
+        boardForm.setDesc("i'm studying2");
+        boardForm.setAuthor("whoareyou2");
+
+        String id = boardService.create(boardForm);
+
+        String message = boardService.deleteById(id);
+
+        Assertions.assertThat(message).isEqualTo("삭제성공");
+    }
 }

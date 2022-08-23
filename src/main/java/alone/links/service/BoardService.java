@@ -27,4 +27,12 @@ public class BoardService {
     public Optional<Board> findById(String id){
         return boardRepository.findById(id);
     }
+
+    public String deleteById(String id){
+        if(this.findById(id).isEmpty())
+            return "삭제실패";
+
+        boardRepository.deleteById(id);
+        return "삭제성공";
+    }
 }
