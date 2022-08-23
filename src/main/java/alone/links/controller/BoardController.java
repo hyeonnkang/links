@@ -41,4 +41,10 @@ public class BoardController {
 
         return "redirect:/";
     }
+
+    @GetMapping("boards/delete")
+    public String delete_process(String id, Model model) {
+        boardService.deleteById(id);
+        return "redirect:/";
+    }
 }
