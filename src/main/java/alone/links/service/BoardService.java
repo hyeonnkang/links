@@ -1,32 +1,25 @@
 package alone.links.service;
 
+import alone.links.controller.BoardForm;
 import alone.links.domain.Board;
 import alone.links.repository.BoardRepository;
-import alone.links.repository.MemoryBoardRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
+@Service
 public class BoardService {
-    private final BoardRepository boardRepository;
+    @Autowired
+    BoardRepository boardRepository;
 
-    public BoardService(BoardRepository boardRepository) {
-        this.boardRepository = boardRepository;
-    }
-
-    // 글 생성
-    public String create(Board board){
+    public String create(BoardForm boardForm){  // 생성한 board id를 반환
+        Board board = new Board(boardForm.getTitle(), boardForm.getDesc(), boardForm.getAuthor());
         boardRepository.insert(board);
         return board.getId();
     }
 
-    // 전체 글 목록 조회
-    public List<Board> findBoards(){
+    public List<Board> findAll(){  // 모든 board 리스트를 반환
         return boardRepository.findAll();
-    }
-
-    // 글 id에 해당하는 글 조회
-    public Optional<Board> findOne(String boardId){
-        return boardRepository.findById(boardId);
     }
 }

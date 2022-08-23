@@ -1,15 +1,9 @@
 package alone.links.repository;
 
 import alone.links.domain.Board;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
-
-public interface BoardRepository {
-
-    Board insert(Board board);
-    Optional<Board> findById(String id);
-    Optional<Board> findByTitle(String title);
-    Optional<Board> findByDesc(String desc);
-    List<Board> findAll();
+@Repository
+public interface BoardRepository extends MongoRepository<Board, String> {
 }
