@@ -25,9 +25,16 @@ public class MemberService {
         if(memberRepository.findById(id).isPresent()){
             Member member = memberRepository.findById(id).get();
             if(pwd.equals(member.getPwd())){
-                return "로그인 성공";
+                return id;
             }
         }
-        return "로그인 실패";
+        return "failed";
+    }
+
+    public Member selectById(String id){
+        if(memberRepository.findById(id).isPresent()){
+            return memberRepository.findById(id).get();
+        }
+        return null;
     }
 }

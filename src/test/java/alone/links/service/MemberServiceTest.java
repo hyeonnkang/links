@@ -28,6 +28,6 @@ public class MemberServiceTest {
         String name = memberService.signUp(memberForm);
 
         String result = memberService.login(memberForm);
-        Assertions.assertThat(result).isEqualTo("로그인 성공");
+        Assertions.assertThat(result).isNotEqualTo("failed");
     }
 }
