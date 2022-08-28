@@ -39,7 +39,8 @@ public class MemberController {
         }else{  // 로그인 성공
             System.out.println("id = " + id);
             Member member = memberService.selectById(id);
-            session.setAttribute("name", member.getName());
+            session.setAttribute("userName", member.getName());
+            session.setAttribute("userId", member.getId());
             return "home";
         }
 
