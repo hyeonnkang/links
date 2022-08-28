@@ -16,9 +16,6 @@ public class BoardService {
 
     public String create(BoardForm boardForm){  // 생성한 board id를 반환
         String author = boardForm.getAuthor();
-        System.out.println("author = " + author);
-        if(author.isBlank())
-            author = "아무개";
         Board board = new Board(boardForm.getTitle(), boardForm.getDesc(),author);
         boardRepository.insert(board);
         return board.getId();

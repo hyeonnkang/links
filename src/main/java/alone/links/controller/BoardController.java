@@ -32,7 +32,6 @@ public class BoardController {
 
     @GetMapping("/boards/create")
     public String create(Model model) {
-        model.addAttribute("data", "아무개");
         return "boards/createBoardForm";
     }
 

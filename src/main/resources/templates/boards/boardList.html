@@ -12,6 +12,9 @@
 <nav>
   <script>nav();</script>
 </nav>
+<div th:if="${session.userName != null}">
+  <a href="/boards/create">글쓰기</a>
+</div>
 <div>
   <script th:inline="javascript">
     /*<![CDATA[ */
