@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>링크스!<links></title>
-    <script src="/js/includeHTML.js"></script>
+    <script type="text/javascript" src="/js/includeHTML.js"></script>
 </head>
 <body>
 <heade>
@@ -12,7 +12,19 @@
 <nav>
     <script>nav();</script>
 </nav>
-
+<div>
+    <script th:inline="javascript">
+        /*<![CDATA[ */
+        let name = /*[[${session.name}]]*/;
+        if(name != null){
+            document.write(name + "님 환영합니다.");
+            logout();
+        }else{
+            login_and_signup();
+        }
+        /* ]]> */
+    </script>
+</div>
 <h2 th:text="${session.name}"></h2>
 </p>
 

@@ -35,18 +35,19 @@ public class MemberController {
         String id  = memberService.login(memberForm);
 
         if(Objects.equals(id, "failed")){ // 로그인 실패
-            session.setAttribute("name", "null");
-            model.addAttribute("msg", "false");
-//            model.addAttribute("name", "null");
             return "login";
         }else{  // 로그인 성공
             System.out.println("id = " + id);
             Member member = memberService.selectById(id);
             session.setAttribute("name", member.getName());
-            model.addAttribute("msg", "true");
-//            model.addAttribute("name", member.getName());
             return "home";
         }
 
+    }
+
+    @GetMapping("/members/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
     }
 }
