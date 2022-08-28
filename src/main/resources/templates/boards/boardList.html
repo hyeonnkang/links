@@ -50,7 +50,11 @@
           <a  th:if="${board.author == session.userName}" th:href="@{/boards/update(id=${board.id})}">수정</a>
         </td>
         <td>
-          <a  th:if="${board.author == session.userName}" th:href="@{/boards/delete(id=${board.id})}">삭제</a>
+          <a
+                  th:if="${board.author == session.userName}"
+                  th:href="@{/boards/delete(id=${board.id})}"
+                  onclick="return confirm('정말로 삭제하시겠습니까?')"
+          >삭제</a>
         </td>
       </tr>
       </tbody>
