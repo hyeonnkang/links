@@ -28,7 +28,7 @@
 <p>
 <form action="/boards/create" method="post">
     <div>
-        <input name="author" type="hidden" value="아무개">
+        <input name="author" type="hidden" th:value=${session.name}>
     </div>
 
     <div>

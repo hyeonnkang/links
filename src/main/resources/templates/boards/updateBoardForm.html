@@ -32,7 +32,7 @@
         <input name="id" type="hidden" th:value="${board.id}">
     </div>
     <div>
-        <input name="author" type="hidden" value="아무개">
+        <input name="author" type="hidden" th:value=${session.name}>
     </div>
 
     <div>
