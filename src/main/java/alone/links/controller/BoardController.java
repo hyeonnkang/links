@@ -40,13 +40,13 @@ public class BoardController {
     public String create_process(BoardForm boardForm) {
         boardService.create(boardForm);
 
-        return "redirect:/";
+        return "redirect:/boards";
     }
 
     @GetMapping("boards/delete")
     public String delete_process(String id, Model model) {
         boardService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/boards";
     }
 
     @GetMapping("/boards/update")
@@ -58,13 +58,13 @@ public class BoardController {
             return "boards/updateBoardForm";
         }else{
             System.out.println("수정하려는 id가 없습니다.");
-            return "redirect:/";
+            return "redirect:/boards";
         }
     }
 
     @PostMapping("boards/update")
     public String update_process(BoardForm boardForm) {
         boardService.update(boardForm);
-        return "redirect:/";
+        return "redirect:/boards";
     }
 }
