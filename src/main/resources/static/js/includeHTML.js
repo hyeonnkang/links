@@ -1,8 +1,7 @@
-function nav(){
+function left_nav(){
     let li = `
-    <p>
-    <a href="/boards">글목록</a>
-    </p>`;
+   
+        `;
     document.write(li);
 }
 

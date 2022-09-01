@@ -1,32 +1,90 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>링크스!<links></title>
-    <script type="text/javascript" src="/js/includeHTML.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Links</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
 </head>
 <body>
-<heade>
-    <script>header();</script>
-</heade>
-<nav>
-    <script>nav();</script>
-</nav>
-<div>
-    <script th:inline="javascript">
-        /*<![CDATA[ */
-        let name = /*[[${session.userName}]]*/;
-        if(name != null){
-            document.write(name + "님 환영합니다.");
-            logout();
-        }else{
-            login_and_signup();
-        }
-        /* ]]> */
-    </script>
-</div>
-<h2 th:text="${session.userName}"></h2>
-</p>
+<div class="d-flex" id="wrapper">
+    <!-- 왼쪽 사이드바 -->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+        <div class="sidebar-heading border-bottom bg-light">게시판 목록</div>
+        <div class="list-group list-group-flush">
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/boards">글목록</a>
+        </div>
+    </div>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- Top navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <button class="btn btn-primary" id="sidebarToggle">메뉴</button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                        <li class="nav-item active"><a class="nav-link" href="/">홈페이지</a></li>
 
+                        <li class="nav-item" id="userinfo">
+<!--                            <a class="nav-link" href="/members/login">로그인</a>-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- 실제 페이지 본문 부분 -->
+        <div class="container-fluid">
+            <h1 class="mt-4">Links</h1>
+            <p>
+                환영합니다. 여기는 홈페이지입니다.
+            </p>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    /*<![CDATA[ */
+    let name = /*[[${session.userName}]]*/;
+    let li = document.getElementById("userinfo");
+    if(name != null){
+        // 사용자 인사말 생성
+        let hello_user = document.createElement("a");
+        hello_user.innerHTML = name + "님 환영합니다.";
+        hello_user.setAttribute("class","nav-link");
+        // 로그아웃 생성
+        let logout = document.createElement("a");
+        logout.innerHTML = "로그아웃";
+        logout.setAttribute("class","nav-link");
+        logout.setAttribute("href", "/members/logout");
+
+        // 위 두 요소를 적용
+        li.appendChild(hello_user);
+        li.appendChild(logout);
+    }else{
+        // 로그인 생성
+        let login = document.createElement("a");
+        login.innerHTML = "로그인";
+        login.setAttribute("class","nav-link");
+        login.setAttribute("href", "/members/login")
+        // 회원가입 생성
+        let signup = document.createElement("a");
+        signup.innerHTML = "회원가입";
+        signup.setAttribute("class","nav-link");
+        signup.setAttribute("href", "/members/signup")
+        // 위 두 요소를 적용
+        li.appendChild(login);
+        li.appendChild(signup);
+    }
+    /* ]]> */
+</script>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
 </body>
 </html>
