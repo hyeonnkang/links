@@ -1,11 +1,3 @@
-/*!
-* Start Bootstrap - Simple Sidebar v6.0.5 (https://startbootstrap.com/template/simple-sidebar)
-* Copyright 2013-2022 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
-*/
-// 
-// Scripts
-// 
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -23,4 +15,22 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
+});
+
+// 외부 html을 로드
+window.addEventListener('load', function() {
+    var allElements = document.getElementsByTagName('*');
+    Array.prototype.forEach.call(allElements, function(el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    el.outerHTML = this.responseText;
+                }
+            };
+            xhttp.open('GET', includePath, true);
+            xhttp.send();
+        }
+    });
 });
