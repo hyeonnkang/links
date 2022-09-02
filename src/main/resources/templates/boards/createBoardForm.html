@@ -1,49 +1,114 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>링크스!<links></title>
-    <script src="/js/includeHTML.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Links</title>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
+    <!--    폰트어썸 cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-<heade>
-    <script>header();</script>
-</heade>
-<nav>
-    <script>nav();</script>
-</nav>
-<div>
-    <script th:inline="javascript">
-        /*<![CDATA[ */
-        let name = /*[[${session.userName}]]*/;
-        if(name != null){
-            document.write(name + "님 환영합니다.");
-            logout();
-        }else{
-            login_and_signup();
-        }
-        /* ]]> */
-    </script>
-</div>
-<p>
-<form action="/boards/create" method="post">
-    <div>
-        <input name="author" type="hidden" th:value=${session.userName}>
-    </div>
+<div class="d-flex" id="wrapper">
+    <!-- 왼쪽 사이드바 -->
+    <div data-include-path="/element/side_nav.html"></div>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- Top navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <button class="btn btn-primary" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">
+                                <i class="fa-solid fa-house"></i>
+                            </a>
+                        </li>
 
-    <div>
-        <div>제목</div>
-        <input name="title" type="text">
+                        <!--사용자가 로그인 되어있으면 이름 및 로그아웃-->
+                        <!--                        아닐 경우, 로그인 및 회원가입을 나타낸다.-->
+                        <li class="nav-item" id="userinfoA">
+                        </li>
+                        <li class="nav-item" id="userinfoB"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- 실제 페이지 본문 부분 -->
+        <div class="container-fluid">
+            <h1 class="mt-4">Links</h1>
+            <p>
+            <form action="/boards/create" method="post">
+                <div>
+                    <input name="author" type="hidden" th:value=${session.userName}>
+                </div>
+
+                <div>
+                    <div>제목</div>
+                    <input name="title" type="text">
+                </div>
+                <div>
+                    <div>내용</div>
+                    <textarea cols="30" id="desc" name="desc" rows="10"></textarea>
+                </div>
+                <div>
+                    <button type="submit">작성하기</button>
+                </div>
+            </form>
+            </p>
+        </div>
     </div>
-    <div>
-        <div>내용</div>
-        <textarea cols="30" id="desc" name="desc" rows="10"></textarea>
-    </div>
-    <div>
-        <button type="submit">작성하기</button>
-    </div>
-</form>
-</p>
+</div>
+<!--사용자의 로그인 유무를 판단하여
+로그인 하지 않은 경우 로그인/회원가입을 표시
+로그인 한 경우 사용자 이름/로그아웃을 표시-->
+<script th:inline="javascript">
+    /*<![CDATA[ */
+    let name = /*[[${session.userName}]]*/;
+    let liA = document.getElementById("userinfoA");
+    let liB = document.getElementById("userinfoB")
+    if(name != null){
+        // 사용자 인사말 생성
+        let hello_user = document.createElement("a");
+        hello_user.innerHTML = name + "님";
+        hello_user.setAttribute("class","nav-link");
+        // 로그아웃 생성
+        let logout = document.createElement("a");
+        logout.innerHTML = "로그아웃";
+        logout.setAttribute("class","nav-link");
+        logout.setAttribute("href", "/members/logout");
+
+        // 위 두 요소를 적용
+        liA.appendChild(hello_user);
+        liB.appendChild(logout);
+    }else{
+        // 로그인 생성
+        let login = document.createElement("a");
+        login.innerHTML = "로그인";
+        login.setAttribute("class","nav-link");
+        login.setAttribute("href", "/members/login")
+        // 회원가입 생성
+        let signup = document.createElement("a");
+        signup.innerHTML = "회원가입";
+        signup.setAttribute("class","nav-link");
+        signup.setAttribute("href", "/members/signup")
+        // 위 두 요소를 적용
+        liA.appendChild(login);
+        liB.appendChild(signup);
+    }
+    /* ]]> */
+</script>
 
 </body>
 </html>
