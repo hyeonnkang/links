@@ -66,6 +66,17 @@
         </div>
     </div>
 </div>
+<!--로그인 실패 시 경고창이 뜨도록 설정-->
+<script th:inline="javascript">
+    /*<![CDATA[ */
+    let result = /*[[${result}]]*/;
+    if(result === "loginFailed"){
+        window.onload=()=>{
+            alert("아이디나 비밀번호를 확인해주세요!");
+        }
+    }
+    /* ]]> */
+</script>
 <!--사용자의 로그인 유무를 판단하여
 로그인 하지 않은 경우 로그인/회원가입을 표시
 로그인 한 경우 사용자 이름/로그아웃을 표시-->

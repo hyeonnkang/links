@@ -35,10 +35,12 @@ public class MemberController {
         String id  = memberService.login(memberForm);
 
         if(Objects.equals(id, "failed")){ // 로그인 실패
+            model.addAttribute("result", "loginFailed");
             return "login";
         }else{  // 로그인 성공
             System.out.println("id = " + id);
             Member member = memberService.selectById(id);
+            model.addAttribute("result", "loginSuccessed");
             session.setAttribute("userName", member.getName());
             session.setAttribute("userId", member.getId());
             return "home";
