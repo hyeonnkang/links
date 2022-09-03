@@ -50,7 +50,6 @@ public class BoardController {
 
     @GetMapping("/boards/update")
     public String update(String id, Model model){
-        model.addAttribute("data" , "아무개");
         if(boardService.findById(id).isPresent()){
             Board board = boardService.findById(id).get();
             model.addAttribute("board", board);
@@ -65,5 +64,17 @@ public class BoardController {
     public String update_process(BoardForm boardForm) {
         boardService.update(boardForm);
         return "redirect:/boards";
+    }
+
+    @GetMapping("boards/details")
+    public String detail(String id, Model model){
+        if(boardService.findById(id).isPresent()){
+            Board board = boardService.findById(id).get();
+            model.addAttribute("board", board);
+            return "boards/boardDetails";
+        }else{
+            System.out.println("글 상세보기 불가: 해당 id의 글이 없음");
+            return "redirect:/boards";
+        }
     }
 }

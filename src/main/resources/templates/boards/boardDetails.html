@@ -51,32 +51,19 @@
       <div th:if="${session.userName != null}">
       </div>
       <div class="container">
-        <div>
-          <table border="1">
-            <thead> <tr>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>좋아요</th>
-              <th>댓글</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="board : ${boards}">
-              <td >
-                <a th:href="@{/boards/details(id=${board.id})}">
-                  <div th:text="${board.title}"></div>
-                </a>
-              </td>
-              <td th:text="${board.author}"></td>
-<!--              좋아요 및 댓글은 나중에-->
-              <td></td>
-              <td></td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
+        <!--      글 상세내용 부분-->
+        <h2 th:text="${board.title}"></h2>
+        <p th:text="${board.desc}"></p>
+        <p th:text="${board.author}"></p>
+
+<!--        수정 및 삭제 버튼-->
+        <a  th:if="${board.author == session.userName}" th:href="@{/boards/update(id=${board.id})}">수정</a>
+        <a
+                th:if="${board.author == session.userName}"
+                th:href="@{/boards/delete(id=${board.id})}"
+                onclick="return confirm('정말로 삭제하시겠습니까?')"
+        ><i class="fa-solid fa-trash fa-lg"></i></a>
       </div>
-      <a href="/boards/create"><i class="fa-regular fa-pen-to-square fa-2x"></i></a>
     </div>
   </div>
 </div>
