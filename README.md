@@ -33,5 +33,6 @@ java -jar {jarFileName}.jar
 - `Javascript`
 
 # 백엔드 스펙
+- `Java`
 - `Spring Boot`
 - `MongoDB`
