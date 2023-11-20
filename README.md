@@ -3,7 +3,8 @@
 로그인 및 로그아웃, 게시글 생성/수정/조회/삭제, 댓글 생성/수정/조회/삭제 가능합니다.
 
 # 구동 모습
-![ezgif com-video-to-gif](https://github.com/hyeonnkang/links/assets/62539341/92e932b4-fb3b-41ce-afdf-bd528fd3f52a)
+https://github.com/hyeonnkang/links/assets/62539341/4f9374c7-b659-49fc-aa72-0e9cf4332b57
+
 
 
 # 담당
